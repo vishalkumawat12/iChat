@@ -61,6 +61,7 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         auth = FirebaseAuth.getInstance();
         more=view.findViewById(R.id.more3dots);
+
         more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,6 +70,7 @@ public class HomeFragment extends Fragment {
                 startActivity(new Intent(getActivity(), SignUp.class));
             }
         });
+
 
         storyRv = view.findViewById(R.id.storyRV);
 
@@ -103,23 +105,8 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
-//    @Override
-//    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-//        inflater.inflate(R.menu.home_menu,menu);
-//        super.onCreateOptionsMenu(menu, inflater);
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//        switch (item.getItemId())
-//        {
-//            case R.id.signout:
-//                Toast.makeText(getActivity(),"signout",Toast.LENGTH_SHORT).show();
-////                auth.signOut();
-////                startActivity(new Intent(getActivity(), SignUp.class));
-//
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
+
+
+
 
 }

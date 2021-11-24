@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.androidDev.ichat.R;
-
+import com.github.dhaval2404.imagepicker.ImagePicker;
 
 
 public class AddPostFragment extends Fragment {
@@ -33,25 +33,34 @@ ImageView imageView;
         View view= inflater.inflate(R.layout.fragment_add_post, container, false);
         imageView=view.findViewById(R.id.upImg);
         imageView.setImageResource(R.drawable.addphoto_icon);
-        Intent intent=new Intent();
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        intent.setType("image/*");
-        startActivityForResult(intent,33);
-
-
+//        Intent intent=new Intent();
+//        intent.setAction(Intent.ACTION_GET_CONTENT);
+//        intent.setType("image/*");
+//        startActivityForResult(intent,33);
+//       ImagePicker.with(AddPostFragment.this).start();
+       ImagePicker.Companion.with(AddPostFragment.this).crop().start();
 
     return view;
 
     }
 
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if (data.getData()!=null){
+//            //Uri uri=data.getData();
+//            imageView.setImageURI(data.getData());
+//
+//        }
+//
+//    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (data.getData()!=null){
-            //Uri uri=data.getData();
             imageView.setImageURI(data.getData());
 
         }
-
     }
 }

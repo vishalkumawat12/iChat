@@ -11,9 +11,9 @@
         android:title="search"
         android:icon="@drawable/chat" />
     <item
-        android:id="@+id/addpost"
-        android:title="Add Post"
-        android:icon="@drawable/add" />
+        android:id="@+id/Shorts"
+        android:title="shorts"
+        android:icon="@drawable/shorts" />
     <item
         android:id="@+id/notification"
         android:title="notification"

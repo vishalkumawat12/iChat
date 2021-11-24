@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -34,32 +35,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        getSupportActionBar().hide();
+//        getSupportActionBar().hide();
 
 
-//        binding.settingsprofile.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(MainActivity.this,"Settings",Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
-//        setSupportActionBar(binding.toolbar2);
-//        MainActivity.this.setTitle("My Profile");
-//        MainActivity.this.setTitleColor(Color.WHITE);
+
 
         auth = FirebaseAuth.getInstance();
-//        binding.button2.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                auth.signOut();
-//                startActivity(new Intent(MainActivity.this, SignUp.class));
-//            }
-//        });
+
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//        binding.toolbar2.setVisibility(View.GONE);
+        getSupportActionBar().show();
         transaction.replace(R.id.container,new HomeFragment());
         transaction.commit();
 
@@ -74,26 +59,27 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
 
                     case R.id.home:
-//                        binding.toolbar2.setVisibility(View.GONE);
+                       getSupportActionBar().show();
                         transaction.replace(R.id.container,new HomeFragment());
                         Toast.makeText(getApplicationContext(), "Home", Toast.LENGTH_SHORT).show();
                         break;
 
                     case R.id.chat:
-//                        binding.toolbar2.setVisibility(View.GONE);
+
+                        getSupportActionBar().hide();
                         transaction.replace(R.id.container,new ChatFragment());
                         Toast.makeText(getApplicationContext(), "Chat", Toast.LENGTH_SHORT).show();
                         break;
 
 
-                    case R.id.addpost:
-//                        binding.toolbar2.setVisibility(View.GONE);
-                        transaction.replace(R.id.container,new AddPostFragment());
+                    case R.id.Shorts:
+                        getSupportActionBar().hide();
+                        transaction.replace(R.id.container,new ShortsFragment());
                         Toast.makeText(getApplicationContext(), "Add Post", Toast.LENGTH_SHORT).show();
                         break;
 
                     case R.id.notification:
-//                        binding.toolbar2.setVisibility(View.GONE);
+                        getSupportActionBar().hide();
                         transaction.replace(R.id.container,new NotificationFragment());
 //                        Intent intent=new Intent(MainActivity.this,NotificationTabsActivity.class);
 //                        startActivity(intent);
@@ -101,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.profile:
-//                        binding.toolbar2.setVisibility(View.VISIBLE);
+                        getSupportActionBar().hide();
                         transaction.replace(R.id.container,new ProfileFragment());
                         Toast.makeText(getApplicationContext(), "Profile", Toast.LENGTH_SHORT).show();
                         break;
@@ -113,29 +99,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.home_menu,menu);
-////        menu.getItem(1).setVisible(false);
-//
-//        return super.onCreateOptionsMenu(menu);
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//        switch (item.getItemId())
-//        {
-//            case R.id.signout:
-//                auth.signOut();
-//                startActivity(new Intent(MainActivity.this, SignUp.class));
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
-
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.editmenu,menu);
-//        return super.onCreateOptionsMenu(menu);
-//    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.chatsitems,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 }
